@@ -75,10 +75,48 @@ dongne-jangter-web/
 └── .env.example            필요한 환경 변수 이름 (값 없음)
 ```
 
+## 라우트 (개발지시서 4장과 같음)
+
+| 그룹 | 경로 | 화면 | 탭 바 |
+|---|---|---|---|
+| `(auth)` | `/login`, `/login/verify` | 로그인·인증 | 없음 |
+| `(auth)` | `/setup/location`, `/location/map` | 동네 설정·인증, 동네 지도 | 없음 |
+| `(tabs)` | `/home` | 홈 피드 | 있음 |
+| `(tabs)` | `/community` | 동네생활 피드 | 있음 |
+| `(tabs)` | `/chat` | 채팅 목록 | 있음 |
+| `(tabs)` | `/my` | 나의 중고거래마켓 | 있음 |
+| `(stack)` | `/home/search` | 검색 | 없음 |
+| `(stack)` | `/product/write`, `/product/[id]`, `/product/[id]/offer`, `/product/[id]/edit` | 상품 등록·상세·가격 제안·수정 | 없음 |
+| `(stack)` | `/chat/[roomId]` | 채팅방 | 없음 |
+| `(stack)` | `/community/write`, `/community/[id]` | 동네생활 글쓰기·게시글 상세 | 없음 |
+| `(stack)` | `/my/sales`, `/my/purchases`, `/my/likes`, `/my/settings` | 판매·구매 내역, 관심 목록, 설정 | 없음 |
+| `(stack)` | `/profile/[userId]`, `/review/write` | 판매자 프로필, 매너 평가 | 없음 |
+| 개발용 | `/dev/states` | 상태 5종 미리보기 (운영 빌드에서 404) | 없음 |
+
+현재 모든 화면은 자리 표시입니다. 구현 순서는 개발지시서 5장의 Phase를 따릅니다.
+
+## 공용 컴포넌트
+
+- `src/components/shared/tab-bar.tsx`: 하단 5탭. 높이는 `--size-tab-bar-height` 토큰을 씁니다.
+- `src/components/shared/state-view.tsx`: 상태 5종(로딩·빈·오류·권한없음 등). 로딩은 스켈레톤입니다.
+- `src/components/shared/screen-placeholder.tsx`: 자리 표시 화면.
+- `src/lib/navigation.ts`: 탭 정의. 탭 바 경로를 한 곳에서 관리합니다.
+
+## 개발 방법
+
+1. 개발지시서(`spec/docs/dev/development-spec.md`)에서 작업 ID와 완료 기준을 확인합니다.
+2. `git submodule update --remote spec`으로 spec을 최신으로 맞춥니다.
+3. 토큰을 바꿨다면 `npm run tokens`를 실행합니다.
+4. 구현하고 완료 기준을 하나씩 확인합니다.
+5. `npm run typecheck`와 `npm run build`를 통과시킵니다.
+6. 커밋 제목은 `[작업ID] 변경 내용`으로 씁니다. 끝에 Co-Authored-By와 Claude-Session 줄을 붙입니다.
+
+새 화면을 만들 때는 같은 경로의 `page.tsx`를 자리 표시에서 실제 화면으로 바꿉니다. 경로를 새로 만들 때는 먼저 개발지시서 4장 표에 행을 추가합니다.
+
 ## 현재 상태
 
-- 완료: 프로젝트 구조, 토큰 생성, 타입 검사와 빌드 통과
-- 진행 예정: 화면 구현 (`(auth)`, `(tabs)` 라우트 그룹), 미들웨어로 로그인 가드, PWA 아이콘, shadcn 설정
+- 완료: 프로젝트 구조, 토큰 생성, 21개 화면 라우트 골격 (T-101), 하단 5탭 셸 (T-102), 상태 5종 공용 컴포넌트 (T-103), `/dev/states` 미리보기 (T-104), 타입 검사와 빌드 통과, 운영 서버 라우트 확인
+- 진행 예정: P2 로그인과 동네 설정 (T-201~T-205), 로그인 가드 미들웨어, PWA 아이콘, shadcn 설정
 
 ## 주의
 
