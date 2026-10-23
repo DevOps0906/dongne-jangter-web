@@ -1,0 +1,11 @@
+{
+  "name": "동네장터",
+  "short_name": "동네장터",
+  "description": "동네 이웃과 가까이에서 하는 중고거래",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F5F7",
+  "theme_color": "#18202C",
+  "lang": "ko",
+  "icons": []
+}

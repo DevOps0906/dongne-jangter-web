@@ -1,0 +1,19 @@
+@import './tokens.css';
+@import 'tailwindcss';
+
+/*
+ * 토큰 사용 규칙
+ * - 색: text-[color:var(--color-ink)], bg-[color:var(--color-brand)]
+ * - 글자 크기: text-[length:var(--text-body)] (반응형 값은 tokens.css가 미디어 쿼리로 처리)
+ * - 글꼴: font-[family-name:var(--font-display)]
+ * Tailwind 테마에 같은 이름을 다시 정의하지 않습니다. 토큰 원본과 충돌하기 때문입니다.
+ */
+
+html,
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+}

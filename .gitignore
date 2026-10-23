@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# env
+.env
+.env.*
+!.env.example
+
+# generated (npm run tokens 로 다시 만듭니다)
+src/styles/tokens.css
+
+# misc
+.DS_Store
+*.log
+*.tsbuildinfo
